@@ -7,20 +7,33 @@
 #include "ScriptedCreature.h"
 
 
-emun Spells
+enum Spells
 {
 
-	SPELL_BERSERKER_CHARGE               =76030
-	SPELL_FLAMEBREAK                     =76032
-	SPELL_MAGMA_SPIT                     =76031
-	SPELL_TERRIFYNG_ROAR                 =76028
-	SPELL_BERSERK                        =82395
+	SPELL_BERSERKER_CHARGE               =76030,
+	SPELL_FLAMEBREAK                     =76032,
+	SPELL_MAGMA_SPIT                     =76031,
+	SPELL_TERRIFYNG_ROAR                 =76028,
+	SPELL_BERSERK                        =82395,
 	//Trash
-	SPELL_LAVA_DROOL                     =76628
-	SPELL_LITTLE_BIG_FLAME_BREATH        =76665  
+	SPELL_LAVA_DROOL                     =76628,
+	SPELL_LITTLE_BIG_FLAME_BREATH        =76665,  
 
+	
 
-}
+};
+enum event
+
+{
+    EVENT_BERSERKER_CHARGE               =1,
+	EVENT_FLAMEBREAK,
+	EVENT_MAGMA_SPIT,
+	EVENT_TERRIFYNG_ROAR,
+	EVENT_BERSERK,
+	//Trash
+	EVENT_LAVA_DROOL,
+	EVENT_LITTLE_BIG_FLAME_BREATH
+};
 
 /*########################
 # Boss Beauty			 #
@@ -38,7 +51,7 @@ public:
 
 	struct boss_beautyAI : public BossAI
 	{
-		boss_beautyAI(Creature* creature) : BossAI(creature, BOSS_BEAUTY, summons(creature), phase(PHASE_NULL) {}
+		boss_beautyAI(Creature* creature) : BossAI(creature, BOSS_BEAUTY,) summons(creature) {}
 
 		EventMap events;
 
@@ -106,7 +119,8 @@ public:
 
 			DoMeleeAttackIfReady();
 			}
-		};
+
+};
 /*########################
 # Psi	 #
 #########################*/
@@ -123,7 +137,7 @@ class npc_buster : public CreatureScript
 		}
 		struct npc_busterAI : BossAI
 		{
-			npc_busterAI(Creature* creature) : BossAI(creature, BOSS_BEAUTY), phase(PHASE_NULL) {}
+			npc_busterAI(Creature* creature) : BossAI(creature, BOSS_BEAUTY) {}
 
 			EventMap events;
 			Phases phase;
@@ -170,8 +184,9 @@ class npc_buster : public CreatureScript
 			};
 				DoMeleeAttackIfReady();
 			}
-			};
 		};
+		};
+		
 		
 			
 
@@ -186,7 +201,7 @@ class npc_runty : public CreatureScript
 		}
 		struct npc_runtyAI : BossAI
 		{
-			npc_runtyAI(Creature* creature) : BossAI(creature, BOSS_BEAUTY), phase(PHASE_NULL) {}
+			npc_runtyAI(Creature* creature) : BossAI(creature, BOSS_BEAUTY) {}
 
 			EventMap events;
 			Phases phase;
@@ -234,7 +249,7 @@ class npc_runty : public CreatureScript
 			}
 				DoMeleeAttackIfReady();
 			}
-			};
+		};
 		};
 
 
@@ -249,7 +264,7 @@ class npc_spot : public CreatureScript
 		}
 		struct npc_spotAI : BossAI
 		{
-			npc_spotAI(Creature* creature) : BossAI(creature, BOSS_BEAUTY), phase(PHASE_NULL) {}
+			npc_spotAI(Creature* creature) : BossAI(creature, BOSS_BEAUTY) {}
 
 			EventMap events;
 			Phases phase;
@@ -296,4 +311,4 @@ class npc_spot : public CreatureScript
 				DoMeleeAttackIfReady();
 			}
 			};
-					};
+			};
