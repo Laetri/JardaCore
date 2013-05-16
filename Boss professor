@@ -8,7 +8,7 @@
 
 enum spell
 {
-  SPELL_FIREBALL              =21656,
+	SPELL_FIREBALL              =21656,
 	SPELL_FROSTFIREBOLT         =22555,
 	SPELL_FLAMESTRIKE           =25645,
 	SPELL_FEAR                  =15845,
@@ -62,14 +62,10 @@ public:
 			events.ScheduleEvent(EVENT_FROSTFIREBOLT, urand(4000, 8000);
 			events.ScheduleEvent(EVENT_FLAMESTRIKE, urand(12000, 15000);
 			events.ScheduleEvent(EVENT_EVENT_STOP, (600000, 0);
-			events.ScheduleEvent(EVENT_EVENT_FEAR, (610000, 0);
 			
 			DoZoneInCombat();
 
 		}
-};
-};
-	
 
 void UpdateAI(uint32 diff)
 		{
@@ -86,7 +82,7 @@ void UpdateAI(uint32 diff)
 				case EVENT_FIREBALL:
 					
 							DoCast(me->getVictim(), SPELL_FIREBALL);
-					events.RescheduleEvent(SPELL_FIREBALL, urand(10000, 20000);
+					events.RescheduleEvent(SPELL_FIREBALL, urand(10000, 20000));
 
 					break;
 
@@ -95,7 +91,7 @@ void UpdateAI(uint32 diff)
 					if(Unit* target = SelectTarget(SELECT_TARGET_RANDOM, 0)) 
 
 
-						DoCast(me->getVictim(), SPELL_FROSTFIREBOLT);
+						DoCast(Target, SPELL_FROSTFIREBOLT);
 					events.RescheduleEvent(SPELL_FIREBALL, urand(4000, 8000);
 
 					break;
@@ -104,21 +100,32 @@ void UpdateAI(uint32 diff)
 					if(Unit* target = SelectTarget(SELECT_TARGET_RANDOM, 0)) 
 
 
-						DoCast(me->getVictim(), SPELL_FLAMESTRIKE);
+						DoCast(Target, SPELL_FLAMESTRIKE);
 					events.RescheduleEvent(SPELL_FLAMESTRIKE, urand(12000, 15000);
 
 					break;
+	
 
 			  	    
 				case EVENT_STOP 	
 					me->AttackStop()
 					me->SetReactState(REACT_PASSIVE);
+					events.ScheduleEvent(EVENT_FEAR, 5000);
+                    DoAction(DO_MOVE);
 
 					break;
-				}
-			};
-};
 
+			   case Event_fear
+				   ic(Unit* target = SelectTarget(SELECT_TARGET_RANDOM,0))
+
+				   docast(Target, SPELL_FEAR);
+				   events.RescheduleEvent(EVENT_FEAR, 5000);
+
+                    break;
+			}
+			}
+}
+	
 				
 
 
@@ -131,19 +138,13 @@ void DoAction(int32 action)
 				case DO_MOVE:
 					me->GetMotionMaster()->Movepoint(1241.01f, 457.14f, 248.45f, 1.5f, 1.0f);
                     me->GetMotionMaster()->MoveRotate(12000, ROTATE_DIRECTION_RIGTH);
+
 					break;
 
 					
 					
-				case EVENT_FEAR
-					if(Unit* target = SelectTarget(SELECT_TARGET_RANDOM, 0)) 
-
-
-						DoCast(me->getVictim(), SPELL_FEAR);
-					events.RescheduleEvent(SPELL_FEAR, (610000, 0);
-
-					break;
 				
-
-		    }
-			};
+				}
+}
+};
+};
