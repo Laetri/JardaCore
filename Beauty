@@ -59,8 +59,7 @@ public:
 		void Reset()
 		{
 			me->SetVisible(true);
-			phase = PHASE_NULL;
-			events.SetPhase(PHASE_NULL);
+			
 		}
 
 		void EnterCombat(Unit* /*who*/)
@@ -79,7 +78,7 @@ public:
 
 			events.Update(diff);
 
-			if(phase == PHASE_NULL)
+			
 			{
 
 			while(uint32 eventID = events.ExecuteEvent())
@@ -90,28 +89,28 @@ public:
 					if(Unit* target = SelectTarget(SELECT_TARGET_RANDOM, 0))
 						
 							DoCast(target, SPELL_BERSERKER_CHARGE);
-					events.RescheduleEvent(SPELL_BERSERKER_CHARGE, 12000, 0, PHASE_NULL);
+					events.RescheduleEvent(SPELL_BERSERKER_CHARGE, 12000, 0,);
 					break;
 
 				case EVENT_FLAMEBREAK:
 					
 						 
 							DoCast(me->getVictim(), SPELL_FLAMEBREAK);
-					events.RescheduleEvent(SPELL_FLAMEBREAK, 12000, 0, PHASE_NULL);
+					events.RescheduleEvent(SPELL_FLAMEBREAK, 12000, 0,);
 					break;
 
 				case EVENT_MAGMA_SPIT:
 					
 						
 							DoCast(me->getVictim(), SPELL_MAGMA_SPIT);
-					events.RescheduleEvent(SPELL_MAGMA_SPIT, 12000, 0, PHASE_NULL);
+					events.RescheduleEvent(SPELL_MAGMA_SPIT, 12000, 0,);
 					break;
 
 					case EVENT_TERRIFYNG_ROAR:
 					
 					
 							DoCast(me->getVictim(), SPELL_TERRIFYNG_ROAR);
-					events.RescheduleEvent(SPELL_TERRIFYNG_ROAR, 12000, 0, PHASE_NULL);
+					events.RescheduleEvent(SPELL_TERRIFYNG_ROAR, 12000, 0,);
 					break;
 				
 				}
@@ -172,14 +171,14 @@ class npc_buster : public CreatureScript
 						
 						 
 							DoCast(me->getVictim(), SPELL_LAVA_DROOL);
-					events.RescheduleEvent(SPELL_LAVA_DROOL, 12000, 0, PHASE_NULL);
+					events.RescheduleEvent(SPELL_LAVA_DROOL, 12000, 0,);
 					break;
 
 				case EVENT_LITTLE_BIG_FLAME_BREATH:
 					
 				
 							DoCast(me->getVictim(), SPELL_LITTLE_BIG_FLAME_BREATH);
-					events.RescheduleEvent(SPELL_LITTLE_BIG_FLAME_BREATH, 12000, 0, PHASE_NULL);
+					events.RescheduleEvent(SPELL_LITTLE_BIG_FLAME_BREATH, 12000, 0,);
 					break;
 			};
 				DoMeleeAttackIfReady();
@@ -237,14 +236,14 @@ class npc_runty : public CreatureScript
 						
 						
 							DoCast(me->getVictim(), SPELL_LAVA_DROOL);
-					events.RescheduleEvent(SPELL_LAVA_DROOL, 12000, 0, PHASE_NULL);
+					events.RescheduleEvent(SPELL_LAVA_DROOL, 12000, 0,);
 					break;
 
 				case EVENT_LITTLE_BIG_FLAME_BREATH:
 					
 						
 							DoCast(me->getVictim(), SPELL_LITTLE_BIG_FLAME_BREATH);
-					events.RescheduleEvent(SPELL_LITTLE_BIG_FLAME_BREATH, 12000, 0, PHASE_NULL);
+					events.RescheduleEvent(SPELL_LITTLE_BIG_FLAME_BREATH, 12000, 0,);
 					break;
 			}
 				DoMeleeAttackIfReady();
@@ -298,17 +297,18 @@ class npc_spot : public CreatureScript
 						
 						
 							DoCast(me->getVictim(), SPELL_LAVA_DROOL);
-					events.RescheduleEvent(SPELL_LAVA_DROOL, 12000, 0, PHASE_NULL);
+					events.RescheduleEvent(SPELL_LAVA_DROOL, 12000, 0,);
 					break;
 
 				case EVENT_LITTLE_BIG_FLAME_BREATH:
 					
 						 
 							DoCast(me->getVictim(), SPELL_LITTLE_BIG_FLAME_BREATH);
-					events.RescheduleEvent(SPELL_LITTLE_BIG_FLAME_BREATH, 12000, 0, PHASE_NULL);
+					events.RescheduleEvent(SPELL_LITTLE_BIG_FLAME_BREATH, 12000, 0,);
 					break;
 			};
 				DoMeleeAttackIfReady();
 			}
 			};
 			};
+		
