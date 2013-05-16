@@ -107,7 +107,7 @@ void UpdateAI(uint32 diff)
 	
 
 			  	    
-				case EVENT_STOP 	
+				case EVENT_STOP; 	
 					me->AttackStop()
 					me->SetReactState(REACT_PASSIVE);
 					events.ScheduleEvent(EVENT_FEAR, 5000);
@@ -115,7 +115,7 @@ void UpdateAI(uint32 diff)
 
 					break;
 
-			   case Event_fear
+			   case Event_fear;
 				   ic(Unit* target = SelectTarget(SELECT_TARGET_RANDOM,0))
 
 				   DoCast(target, SPELL_FEAR);
