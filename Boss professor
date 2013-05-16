@@ -91,7 +91,7 @@ void UpdateAI(uint32 diff)
 					if(Unit* target = SelectTarget(SELECT_TARGET_RANDOM, 0)) 
 
 
-						DoCast(Target, SPELL_FROSTFIREBOLT);
+						DoCast(target, SPELL_FROSTFIREBOLT);
 					events.RescheduleEvent(SPELL_FIREBALL, urand(4000, 8000);
 
 					break;
@@ -100,7 +100,7 @@ void UpdateAI(uint32 diff)
 					if(Unit* target = SelectTarget(SELECT_TARGET_RANDOM, 0)) 
 
 
-						DoCast(Target, SPELL_FLAMESTRIKE);
+						DoCast(target, SPELL_FLAMESTRIKE);
 					events.RescheduleEvent(SPELL_FLAMESTRIKE, urand(12000, 15000);
 
 					break;
@@ -118,7 +118,7 @@ void UpdateAI(uint32 diff)
 			   case Event_fear
 				   ic(Unit* target = SelectTarget(SELECT_TARGET_RANDOM,0))
 
-				   docast(Target, SPELL_FEAR);
+				   DoCast(target, SPELL_FEAR);
 				   events.RescheduleEvent(EVENT_FEAR, 5000);
 
                     break;
