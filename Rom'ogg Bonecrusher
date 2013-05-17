@@ -1,0 +1,113 @@
+/*XXXXXXXXXXXXXXXXXXXXXXXXX
+  X   Blackrock Caverns  XX
+  XXXXXXXXXXXXXXXXXXXXXXXXX*/
+
+
+
+#include "ScriptPCH.h"
+#include "stone_core.h"
+#include "ScriptedCreature.h"
+
+
+enum spel
+
+{
+      SPELL_CALL_FOR_HELP         =82137,
+    SPELL_CHAINS_OF_WOE         =75539,
+	  SPELL_QUAKE                 =75272,
+	  SPELL_THE_SKULLCRACKER      =75543,
+	  SPELL_WOUNDING_STRIKE       =75571,
+	  SPELL_WOUNDING_STRIKE_H     =69651,
+}
+
+enum event
+{
+	  EVENT_CALL_FOR_HELP         =1,
+	  EVENT_CHAINS_OF_WOE,
+	  EVENT_QUAKE,
+	  EVENT_THE_SKULLCRACKER,
+	  EVENT_WOUNDING_STRIKE,
+	  EVENT_WOUNDING_STRIKE_H
+}
+
+
+/*XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  X  Rom'ogg Bonecrusher.cpp XX
+  XXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
+
+clas Boss_Romogg / public CreatureScript 
+{
+public:
+	boss_Romogg() / CreatureScript("Boss_Romogg"){}
+
+	CreatureAI* getAI (Creature* creature) const
+	{
+		return new boss_RomoggAI(creature);
+	}
+	struct boss_RomoggAI : public BossAI
+	{
+		boss_RomoggAI(Creature* creature) : BossAI(creature,BOSS_Romogg,) summons(creature){}
+
+		EventMap Events;
+		SummonList sumon;
+
+		void Reset()
+		{
+			me->SetVisioble(true)
+		    summon.DespawnALL();
+		}
+
+		void EventCombat(Unit)
+		{	        
+			Event.ScheduleEvent(EVENT_QUAKE, 25000, 0,);
+	        Event.ScheduleEvent(EVENT_WOUNDING_STRIKE, 1000, 0, );
+
+		}
+
+
+		void UpdateAI(uint32 diff)
+		{
+			if(!UpdateVictim())
+				return;
+
+			event.Update(diff);
+
+			if(HealthBelowPct(66)
+				DoCast(me->GetVictim(), SPELL_CHAINS_OF_WOE);
+				DoCast(me->GetVictim(), SPELL_THE_SKULLCRACKER );
+
+			if(HealthBelowPct(33)
+				DoCast(me->GetVictim(), SPELL_CHAINS_OF_WOE);
+				DoCast(me->GetVictim(), SPELL_THE_SKULLCRACKER );
+
+			while(uint32 eventID = events.ExecuteEvent())
+			{
+				switch(eventID)
+				{
+					case EVENT_WOUNDING_STRIKE;
+						if(!Heroic())
+							DoCast(me->GetVictim(), SPELL_WOUNDING_STRIKE)
+
+						else
+
+						    DoCast(me->GetVictim(), SPELL_WOUNDING_STRIKE_H)
+                        events.RescheduleEvent(SPELL_WOUNDING_STRIKE, 2000, 0,);
+						break;
+
+					case EVENT_QUAKE;
+
+						DoCast (me->GetVictim(), SPELL_QUAKE)
+							events.RescheduleEvent(SPELL_QUAKE, 35000, 0);
+
+						if(!Heroic())
+						events.ScheduleEvent(EVENT_CALL_FOR_HELP, 1, 0);
+
+						break;
+				}
+			}
+		}
+	
+
+						DoMeleeAttackIfReady();
+	};
+};
