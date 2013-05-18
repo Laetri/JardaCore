@@ -319,7 +319,7 @@ class npc_spot : public CreatureScript
 
 vois AddSC_boss_beauty()
 {
-	new boss:beaty();
+	new boss_beaty();
 	new npc_spot();
 	new nps_runty();
 	new npc_buster();
