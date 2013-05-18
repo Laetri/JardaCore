@@ -11,7 +11,7 @@ enum Spells
 {
 
 	SPELL_BERSERKER_CHARGE_H               =76030,
-	SPELL_BERSERKER_CHARGE                 =99827
+	SPELL_BERSERKER_CHARGE                 =99827,
 	SPELL_FLAMEBREAK_H                     =76032,
 	SPELL_FLAMEBREAK                       =99830,
 	SPELL_MAGMA_SPIT                       =76031,
@@ -33,7 +33,7 @@ enum event
 	EVENT_FLAMEBREAK_H,
 	EVENT_MAGMA_SPIT,
 	EVENT_TERRIFYNG_ROAR,
-	EVENT_TERRIFYNG_ROAR_h
+	EVENT_TERRIFYNG_ROAR_h,
 	//Trash
 	EVENT_LAVA_DROOL,
 	EVENT_LITTLE_BIG_FLAME_BREATH
@@ -69,7 +69,7 @@ public:
 		void EnterCombat(Unit* /*who*/)
 		{
 			events.ScheduleEvent(EVENT_BERSERKER_CHARGE, 14000);
-			events.ScheduleEvent(EVENT_FLAMEBREAK, 20000,);
+			events.ScheduleEvent(EVENT_FLAMEBREAK, 20000);
 			events.ScheduleEvent(EVENT_MAGMA_SPIT, 6000);
 			events.ScheduleEvent(EVENT_TERRIFYNG_ROAR, 30000);
 			DoZoneInCombat();
@@ -91,12 +91,15 @@ public:
 				{
 				case EVENT_BERSERKER_CHARGE:
 					if(Unit* target = SelectTarget(SELECT_TARGET_RANDOM, 0))
-						if(!Heroic())
+						if(!IsHeroic())
+
 							DoCast(target, SPELL_BERSERKER_CHARGE);
 						else
 						
-							DoCast(target, SPELL_BERSERKER_CHARGE_h);
+							DoCast(target, SPELL_BERSERKER_CHARGE_H);
+
 					events.RescheduleEvent(SPELL_BERSERKER_CHARGE, 12000);
+
 					break;
 
 				case EVENT_FLAMEBREAK:
@@ -105,7 +108,9 @@ public:
 							DoCast(me->getVictim(), SPELL_FLAMEBREAK);
 						 else
 						    DoCast(me->getVictim(), SPELL_FLAMEBREAK_H);
+
 					events.RescheduleEvent(SPELL_FLAMEBREAK, 12000);
+
 					break;
 
 				case EVENT_MAGMA_SPIT:
@@ -113,6 +118,7 @@ public:
 						
 							DoCast(me->getVictim(), SPELL_MAGMA_SPIT);
 					events.RescheduleEvent(SPELL_MAGMA_SPIT, 12000);
+
 					break;
 
 				case EVENT_TERRIFYNG_ROAR:
@@ -121,8 +127,10 @@ public:
 					
 					    DoCast(me->getVictim(), SPELL_TERRIFYNG_ROAR);
 					else
+						
 						DoCast(me->getVictim(), SPELL_TERRIFYNG_ROAR_H);
 					events.RescheduleEvent(SPELL_TERRIFYNG_ROAR, 12000);
+
 					break;
 				}
 			}
@@ -244,14 +252,14 @@ class npc_runty : public CreatureScript
 						
 						
 							DoCast(me->getVictim(), SPELL_LAVA_DROOL);
-					events.RescheduleEvent(SPELL_LAVA_DROOL, 12000, 0,);
+					events.RescheduleEvent(SPELL_LAVA_DROOL, 12000);
 					break;
 
 				case EVENT_LITTLE_BIG_FLAME_BREATH:
 					
 						
 							DoCast(me->getVictim(), SPELL_LITTLE_BIG_FLAME_BREATH);
-					events.RescheduleEvent(SPELL_LITTLE_BIG_FLAME_BREATH, 12000, 0,);
+					events.RescheduleEvent(SPELL_LITTLE_BIG_FLAME_BREATH, 12000);
 					break;
 				}
 			}
@@ -301,14 +309,15 @@ class npc_spot : public CreatureScript
 						
 						
 							DoCast(me->getVictim(), SPELL_LAVA_DROOL);
-					events.RescheduleEvent(SPELL_LAVA_DROOL, 12000, 0,);
+					events.RescheduleEvent(SPELL_LAVA_DROOL, 12000);
+
 					break;
 
 				case EVENT_LITTLE_BIG_FLAME_BREATH:
 					
 						 
 							DoCast(me->getVictim(), SPELL_LITTLE_BIG_FLAME_BREATH);
-					events.RescheduleEvent(SPELL_LITTLE_BIG_FLAME_BREATH, 12000, 0,);
+					events.RescheduleEvent(SPELL_LITTLE_BIG_FLAME_BREATH, 12000);
 					break;
 				}
 			}
@@ -319,7 +328,7 @@ class npc_spot : public CreatureScript
 
 vois AddSC_boss_beauty()
 {
-	new boss_beaty();
+	new boss:beaty();
 	new npc_spot();
 	new nps_runty();
 	new npc_buster();
