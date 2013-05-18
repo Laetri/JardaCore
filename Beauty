@@ -98,7 +98,7 @@ public:
 						
 							DoCast(target, SPELL_BERSERKER_CHARGE_H);
 
-					events.RescheduleEvent(SPELL_BERSERKER_CHARGE, 12000);
+					events.RescheduleEvent(EVENT_BERSERKER_CHARGE, 12000);
 
 					break;
 
@@ -109,7 +109,7 @@ public:
 						 else
 						    DoCast(me->getVictim(), SPELL_FLAMEBREAK_H);
 
-					events.RescheduleEvent(SPELL_FLAMEBREAK, 12000);
+					events.RescheduleEvent(EVENT_FLAMEBREAK, 12000);
 
 					break;
 
@@ -117,7 +117,7 @@ public:
 					
 						
 							DoCast(me->getVictim(), SPELL_MAGMA_SPIT);
-					events.RescheduleEvent(SPELL_MAGMA_SPIT, 12000);
+					events.RescheduleEvent(EVENT_MAGMA_SPIT, 12000);
 
 					break;
 
@@ -129,7 +129,7 @@ public:
 					else
 						
 						DoCast(me->getVictim(), SPELL_TERRIFYNG_ROAR_H);
-					events.RescheduleEvent(SPELL_TERRIFYNG_ROAR, 12000);
+					events.RescheduleEvent(EVENT_TERRIFYNG_ROAR, 12000);
 
 					break;
 				}
@@ -189,14 +189,14 @@ class npc_buster : public CreatureScript
 						
 						 
 							DoCast(me->getVictim(), SPELL_LAVA_DROOL);
-					events.RescheduleEvent(SPELL_LAVA_DROOL, 12000);
+					events.RescheduleEvent(EVENT_LAVA_DROOL, 12000);
 					break;
 
 				case EVENT_LITTLE_BIG_FLAME_BREATH:
 					
 				
 							DoCast(me->getVictim(), SPELL_LITTLE_BIG_FLAME_BREATH);;
-					events.RescheduleEvent(SPELL_LITTLE_BIG_FLAME_BREATH, 12000);
+					events.RescheduleEvent(EVENT_LITTLE_BIG_FLAME_BREATH, 12000);
 					break;
 				}
 			}
@@ -252,14 +252,14 @@ class npc_runty : public CreatureScript
 						
 						
 							DoCast(me->getVictim(), SPELL_LAVA_DROOL);
-					events.RescheduleEvent(SPELL_LAVA_DROOL, 12000);
+					events.RescheduleEvent(EVENT_LAVA_DROOL, 12000);
 					break;
 
 				case EVENT_LITTLE_BIG_FLAME_BREATH:
 					
 						
 							DoCast(me->getVictim(), SPELL_LITTLE_BIG_FLAME_BREATH);
-					events.RescheduleEvent(SPELL_LITTLE_BIG_FLAME_BREATH, 12000);
+					events.RescheduleEvent(EVENT_LITTLE_BIG_FLAME_BREATH, 12000);
 					break;
 				}
 			}
@@ -309,7 +309,7 @@ class npc_spot : public CreatureScript
 						
 						
 							DoCast(me->getVictim(), SPELL_LAVA_DROOL);
-					events.RescheduleEvent(SPELL_LAVA_DROOL, 12000);
+					events.RescheduleEvent(EVENT_LAVA_DROOL, 12000);
 
 					break;
 
@@ -317,7 +317,7 @@ class npc_spot : public CreatureScript
 					
 						 
 							DoCast(me->getVictim(), SPELL_LITTLE_BIG_FLAME_BREATH);
-					events.RescheduleEvent(SPELL_LITTLE_BIG_FLAME_BREATH, 12000);
+					events.RescheduleEvent(EVENT_LITTLE_BIG_FLAME_BREATH, 12000);
 					break;
 				}
 			}
