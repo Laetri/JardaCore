@@ -84,15 +84,17 @@ public:
 			{
 				me->SummonCreature(NPC_CHAINS_OF_WHO, me->GetPositionX() +irand(-6, 6), me->GetPositionY() irand(-6,6), me->GetPositionZ(), 0, TEMPSUMMON_CORPSE_DESPAWN);
 				DoCast(me->GetVictim(), SPELL_THE_SKULLCRACKER );
+				break;
 			}
-			break;
+			
 
 			if(HealthBelowPct(33)
 			{
 				me->SummonCreature(NPC_CHAINS_OF_WHO, me->GetPositionX() +irand(-6, 6), me->GetPositionY() irand(-6,6), me->GetPositionZ(), 0, TEMPSUMMON_CORPSE_DESPAWN);
 				DoCast(me->GetVictim(), SPELL_THE_SKULLCRACKER );
+				break;
 			}
-			break;
+		
 
 
 			while(uint32 eventID = events.ExecuteEvent())
