@@ -121,7 +121,7 @@ public:
 	};
 };
 
-vois AddSC_boss_romogg()
+void AddSC_boss_romogg()
 {
 	new boss_romogg();
 	new npc_chains_of_who();
