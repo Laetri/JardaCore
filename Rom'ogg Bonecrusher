@@ -68,6 +68,7 @@ public:
 			Event.ScheduleEvent(EVENT_QUAKE, 25000, 0,);
 	        Event.ScheduleEvent(EVENT_WOUNDING_STRIKE, 1000, 0, );
 
+
 		}
 
 
@@ -84,12 +85,15 @@ public:
 				me->SummonCreature(NPC_CHAINS_OF_WHO, me->GetPositionX() +irand(-6, 6), me->GetPositionY() irand(-6,6), me->GetPositionZ(), 0, TEMPSUMMON_CORPSE_DESPAWN);
 				DoCast(me->GetVictim(), SPELL_THE_SKULLCRACKER );
 			}
+			break;
 
 			if(HealthBelowPct(33)
 			{
 				me->SummonCreature(NPC_CHAINS_OF_WHO, me->GetPositionX() +irand(-6, 6), me->GetPositionY() irand(-6,6), me->GetPositionZ(), 0, TEMPSUMMON_CORPSE_DESPAWN);
 				DoCast(me->GetVictim(), SPELL_THE_SKULLCRACKER );
 			}
+			break;
+
 
 			while(uint32 eventID = events.ExecuteEvent())
 			{
@@ -102,13 +106,13 @@ public:
 						else
 
 						    DoCast(me->GetVictim(), SPELL_WOUNDING_STRIKE_H)
-                        events.RescheduleEvent(SPELL_WOUNDING_STRIKE, 2000,);
+                        events.RescheduleEvent(EVENT_WOUNDING_STRIKE, 2000,);
 						break;
 
 					case EVENT_QUAKE;
 
 						DoCast (me->GetVictim(), SPELL_QUAKE)
-							events.RescheduleEvent(SPELL_QUAKE, 35000);
+							events.RescheduleEvent(EVENT_QUAKE, 35000);
 
 						if(!IsHeroic())
 						events.ScheduleEvent(SPELL_CALL_FOR_HELP);
