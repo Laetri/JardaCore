@@ -27,7 +27,9 @@ enum event
 	  EVENT_QUAKE,
 	  EVENT_THE_SKULLCRACKER,
 	  EVENT_WOUNDING_STRIKE,
-	  EVENT_WOUNDING_STRIKE_H
+	  EVENT_WOUNDING_STRIKE_H,
+	  EVENT_HP_MAX,
+	  EVENT_HP_MIN
 }
 
 enum Npcs
@@ -83,18 +85,15 @@ public:
 			if(HealthBelowPct(66)
 			{
 				me->SummonCreature(NPC_CHAINS_OF_WHO, me->GetPositionX() +irand(-6, 6), me->GetPositionY() irand(-6,6), me->GetPositionZ(), 0, TEMPSUMMON_CORPSE_DESPAWN);
-				DoCast(me->GetVictim(), SPELL_THE_SKULLCRACKER );
-				break;
+				DoCast(me->GetVictim(), SPELL_THE_SKULLCRACKER ) break;
 			}
 			
 
 			if(HealthBelowPct(33)
 			{
 				me->SummonCreature(NPC_CHAINS_OF_WHO, me->GetPositionX() +irand(-6, 6), me->GetPositionY() irand(-6,6), me->GetPositionZ(), 0, TEMPSUMMON_CORPSE_DESPAWN);
-				DoCast(me->GetVictim(), SPELL_THE_SKULLCRACKER );
-				break;
+				DoCast(me->GetVictim(), SPELL_THE_SKULLCRACKER ) break;
 			}
-		
 
 
 			while(uint32 eventID = events.ExecuteEvent())
@@ -120,6 +119,22 @@ public:
 						events.ScheduleEvent(SPELL_CALL_FOR_HELP);
 
 						break;
+
+				    case EVENT_HP_MAX
+
+						if(HealthBelowPct(66)
+
+			  	            me->SummonCreature(NPC_CHAINS_OF_WHO, me->GetPositionX() +irand(-6, 6), me->GetPositionY() irand(-6,6), me->GetPositionZ(), 0, TEMPSUMMON_CORPSE_DESPAWN);
+				            DoCast(me->GetVictim(), SPELL_THE_SKULLCRACKER );
+			                break;
+			
+				    case EVENT_HP_MIN
+
+			           if(HealthBelowPct(33)
+			
+				            me->SummonCreature(NPC_CHAINS_OF_WHO, me->GetPositionX() +irand(-6, 6), me->GetPositionY() irand(-6,6), me->GetPositionZ(), 0, TEMPSUMMON_CORPSE_DESPAWN);
+				            DoCast(me->GetVictim(), SPELL_THE_SKULLCRACKER );
+			           break;
 				}
 			}
 						DoMeleeAttackIfReady();
