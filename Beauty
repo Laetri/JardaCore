@@ -3,7 +3,7 @@
 #########################*/
 
 #include "ScriptPCH.h"
-#include "stone_core.h"
+#include "Blackrock_Caverns.h"
 #include "ScriptedCreature.h"
 
 
@@ -62,18 +62,21 @@ public:
 
 		void Reset()
 		{
-			me->SetVisible(true);
+			_Reset();
 			
 		}
 
 		void EnterCombat(Unit* /*who*/)
 		{
-			events.ScheduleEvent(EVENT_BERSERKER_CHARGE, 14000,0,);
-			events.ScheduleEvent(EVENT_FLAMEBREAK, 20000, 0,);
-			events.ScheduleEvent(EVENT_MAGMA_SPIT, 6000,);
-			events.ScheduleEvent(EVENT_TERRIFYNG_ROAR, 30000, 0,);
+			events.ScheduleEvent(EVENT_BERSERKER_CHARGE, 14000);
+			events.ScheduleEvent(EVENT_FLAMEBREAK, 20000,);
+			events.ScheduleEvent(EVENT_MAGMA_SPIT, 6000);
+			events.ScheduleEvent(EVENT_TERRIFYNG_ROAR, 30000);
 			DoZoneInCombat();
 		}
+
+
+
 		void UpdateAI(uint32 diff)
 		{
 			if(!UpdateVictim())
@@ -81,8 +84,6 @@ public:
 
 			events.Update(diff);
 
-			
-			{
 
 			while(uint32 eventID = events.ExecuteEvent())
 			{
@@ -95,44 +96,39 @@ public:
 						else
 						
 							DoCast(target, SPELL_BERSERKER_CHARGE_h);
-					events.RescheduleEvent(SPELL_BERSERKER_CHARGE, 12000, 0,);
+					events.RescheduleEvent(SPELL_BERSERKER_CHARGE, 12000);
 					break;
 
 				case EVENT_FLAMEBREAK:
 					
-						 if(!Heroic())
+						 if(!IsHeroic())
 							DoCast(me->getVictim(), SPELL_FLAMEBREAK);
 						 else
-						 
 						    DoCast(me->getVictim(), SPELL_FLAMEBREAK_H);
-					events.RescheduleEvent(SPELL_FLAMEBREAK, 12000, 0,);
+					events.RescheduleEvent(SPELL_FLAMEBREAK, 12000);
 					break;
 
 				case EVENT_MAGMA_SPIT:
 					
 						
 							DoCast(me->getVictim(), SPELL_MAGMA_SPIT);
-					events.RescheduleEvent(SPELL_MAGMA_SPIT, 12000, 0,);
+					events.RescheduleEvent(SPELL_MAGMA_SPIT, 12000);
 					break;
 
 				case EVENT_TERRIFYNG_ROAR:
 
-					if(!Heroic())
+					if(!IsHeroic())
 					
 					    DoCast(me->getVictim(), SPELL_TERRIFYNG_ROAR);
-					    
 					else
-					
 						DoCast(me->getVictim(), SPELL_TERRIFYNG_ROAR_H);
-					events.RescheduleEvent(SPELL_TERRIFYNG_ROAR, 12000, 0,);
+					events.RescheduleEvent(SPELL_TERRIFYNG_ROAR, 12000);
 					break;
-				
 				}
 			}
-
 			DoMeleeAttackIfReady();
-			}
-
+		}
+	};
 };
 /*########################
 # Psi	 #
@@ -166,6 +162,8 @@ class npc_buster : public CreatureScript
 				events.ScheduleEvent(EVENT_LITTLE_BIG FLAME_BREATH, 12000);
 				DoZoneInCombat();
 			}
+
+
 		void UpdateAI(uint32 diff)
 		{
 			if(!UpdateVictim())
@@ -173,8 +171,6 @@ class npc_buster : public CreatureScript
 
 			events.Update(diff);
 
-			if(phase == PHASE_NULL)
-			{
 
 			while(uint32 eventID = events.ExecuteEvent())
 			{
@@ -185,20 +181,21 @@ class npc_buster : public CreatureScript
 						
 						 
 							DoCast(me->getVictim(), SPELL_LAVA_DROOL);
-					events.RescheduleEvent(SPELL_LAVA_DROOL, 12000, 0,);
+					events.RescheduleEvent(SPELL_LAVA_DROOL, 12000);
 					break;
 
 				case EVENT_LITTLE_BIG_FLAME_BREATH:
 					
 				
 							DoCast(me->getVictim(), SPELL_LITTLE_BIG_FLAME_BREATH);;
-					events.RescheduleEvent(SPELL_LITTLE_BIG_FLAME_BREATH, 12000, 0,);
+					events.RescheduleEvent(SPELL_LITTLE_BIG_FLAME_BREATH, 12000);
 					break;
-			};
-				DoMeleeAttackIfReady();
+				}
 			}
+				DoMeleeAttackIfReady();
+		}
 		};
-		};
+};
 		
 		
 			
@@ -238,9 +235,6 @@ class npc_runty : public CreatureScript
 
 			events.Update(diff);
 
-			if(phase == PHASE_NULL)
-			{
-
 			while(uint32 eventID = events.ExecuteEvent())
 			{
 				switch(eventID)
@@ -259,13 +253,12 @@ class npc_runty : public CreatureScript
 							DoCast(me->getVictim(), SPELL_LITTLE_BIG_FLAME_BREATH);
 					events.RescheduleEvent(SPELL_LITTLE_BIG_FLAME_BREATH, 12000, 0,);
 					break;
+				}
 			}
 				DoMeleeAttackIfReady();
-			}
+		}
 		};
-		};
-
-
+};
 class npc_spot : public CreatureScript
 	{
 	public:
@@ -293,15 +286,12 @@ class npc_spot : public CreatureScript
 				events.ScheduleEvent(EVENT_LITTLE_BIG FLAME_BREATH, 12000);
 				DoZoneInCombat();
 			}
-					void UpdateAI(uint32 diff)
+		void UpdateAI(uint32 diff)
 		{
 			if(!UpdateVictim())
 				return;
 
 			events.Update(diff);
-
-			if(phase == PHASE_NULL)
-			{
 
 			while(uint32 eventID = events.ExecuteEvent())
 			{
@@ -320,9 +310,17 @@ class npc_spot : public CreatureScript
 							DoCast(me->getVictim(), SPELL_LITTLE_BIG_FLAME_BREATH);
 					events.RescheduleEvent(SPELL_LITTLE_BIG_FLAME_BREATH, 12000, 0,);
 					break;
-			};
-				DoMeleeAttackIfReady();
+				}
 			}
-			};
-			};
-		
+				DoMeleeAttackIfReady();
+		}
+		};
+};
+
+vois AddSC_boss_beauty()
+{
+	new boss:beaty();
+	new npc_spot();
+	new nps_runty();
+	new npc_buster();
+}
