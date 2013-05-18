@@ -5,7 +5,7 @@
 
 
 #include "ScriptPCH.h"
-#include "stone_core.h"
+#include "Blackrock_Caverns.h"
 #include "ScriptedCreature.h"
 
 
@@ -16,7 +16,7 @@ enum spel
 	  SPELL_CHAINS_OF_WOE         =75539,
 	  SPELL_QUAKE                 =75272,
 	  SPELL_THE_SKULLCRACKER      =75543,
-	  SPELL_WOUNDING_STRIKE       =75571,
+	  SPELL_WOUNDING_STRIKE       =75571,;
 	  SPELL_WOUNDING_STRIKE_H     =69651,
 }
 
@@ -59,7 +59,7 @@ public:
 
 		void Reset()
 		{
-			me->SetVisioble(true)
+			_Reset();
 		    summon.DespawnALL();
 		}
 
@@ -77,14 +77,19 @@ public:
 				return;
 
 			event.Update(diff);
+			
 
 			if(HealthBelowPct(66)
-				me->SummonCreature(NPC_CHAINS_OF_WHO, me->GetPositionX() irand(-6, 6), me->GetPositionY() irand(-6,6), me->GetPositionZ(), 0, TEMPSUMMON_CORPSE_DESPAWN);
+			{
+				me->SummonCreature(NPC_CHAINS_OF_WHO, me->GetPositionX() +irand(-6, 6), me->GetPositionY() irand(-6,6), me->GetPositionZ(), 0, TEMPSUMMON_CORPSE_DESPAWN);
 				DoCast(me->GetVictim(), SPELL_THE_SKULLCRACKER );
+			}
 
 			if(HealthBelowPct(33)
-				me->SummonCreature(NPC_CHAINS_OF_WHO, me->GetPositionX() irand(-6, 6), me->GetPositionY() irand(-6,6), me->GetPositionZ(), 0, TEMPSUMMON_CORPSE_DESPAWN);
+			{
+				me->SummonCreature(NPC_CHAINS_OF_WHO, me->GetPositionX() +irand(-6, 6), me->GetPositionY() irand(-6,6), me->GetPositionZ(), 0, TEMPSUMMON_CORPSE_DESPAWN);
 				DoCast(me->GetVictim(), SPELL_THE_SKULLCRACKER );
+			}
 
 			while(uint32 eventID = events.ExecuteEvent())
 			{
@@ -97,25 +102,27 @@ public:
 						else
 
 						    DoCast(me->GetVictim(), SPELL_WOUNDING_STRIKE_H)
-                                                events.RescheduleEvent(SPELL_WOUNDING_STRIKE, 2000, 0,);
-                                                
+                        events.RescheduleEvent(SPELL_WOUNDING_STRIKE, 2000,);
 						break;
 
 					case EVENT_QUAKE;
 
 						DoCast (me->GetVictim(), SPELL_QUAKE)
-							events.RescheduleEvent(SPELL_QUAKE, 35000, 0);
+							events.RescheduleEvent(SPELL_QUAKE, 35000);
 
 						if(!IsHeroic())
-						
 						events.ScheduleEvent(SPELL_CALL_FOR_HELP);
 
 						break;
 				}
 			}
-		}
-	
-
 						DoMeleeAttackIfReady();
+		}
 	};
 };
+
+vois AddSC_boss_beauty()
+{
+	new boss_Romogg();
+	new npc_Chains_of_who();
+}
