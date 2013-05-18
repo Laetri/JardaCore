@@ -123,6 +123,6 @@ public:
 
 vois AddSC_boss_beauty()
 {
-	new boss_Romogg();
-	new npc_Chains_of_who();
+	new boss_romogg();
+	new npc_chains_of_who();
 }
