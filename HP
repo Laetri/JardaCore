@@ -1,0 +1,663 @@
+SET
+
+@NPC_ENTRY := 39700, 
+
+@NPC_HEALTH := 893580, 
+
+@NPC_MANA := 200000, 
+
+@NPC_ARMOR := 10763; 
+
+ 
+
+-- DO NOT CHANGE ANYTHING BELOW
+
+SET
+
+@NPC_CLASS := (SELECT `unit_class` FROM creature_template WHERE Entry = @NPC_ENTRY),
+
+@NPC_LEVEL := ROUND(((SELECT `minlevel` FROM creature_template WHERE Entry = @NPC_ENTRY)+(SELECT `maxlevel` FROM creature_template WHERE Entry = @NPC_ENTRY))/2, 0),
+
+@EXP := (SELECT `exp` FROM creature_template WHERE Entry = @NPC_ENTRY);
+
+ 
+
+SET
+
+@GET_HP_COL :=
+
+(SELECT CASE @EXP
+
+        WHEN 0 THEN (SELECT basehp0 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 1 THEN (SELECT basehp1 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 2 THEN (SELECT basehp2 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+END),
+
+-- Getting base armor
+
+@GET_AR_COL := (SELECT basearmor FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS);
+
+ 
+
+ 
+
+UPDATE creature_template SET Health_mod = (@NPC_HEALTH/@GET_HP_COL), Armor_mod = (@NPC_ARMOR/@GET_AR_COL) WHERE Entry = @NPC_ENTRY;
+
+
+XXXXXXXXXXXXXX
+
+
+
+SET
+
+@NPC_ENTRY := 39701, 
+
+@NPC_HEALTH := 4149700, 
+
+@NPC_MANA := 200000, 
+
+@NPC_ARMOR := 10763; 
+
+ 
+
+-- DO NOT CHANGE ANYTHING BELOW
+
+SET
+
+@NPC_CLASS := (SELECT `unit_class` FROM creature_template WHERE Entry = @NPC_ENTRY),
+
+@NPC_LEVEL := ROUND(((SELECT `minlevel` FROM creature_template WHERE Entry = @NPC_ENTRY)+(SELECT `maxlevel` FROM creature_template WHERE Entry = @NPC_ENTRY))/2, 0),
+
+@EXP := (SELECT `exp` FROM creature_template WHERE Entry = @NPC_ENTRY);
+
+ 
+
+SET
+
+@GET_HP_COL :=
+
+(SELECT CASE @EXP
+
+        WHEN 0 THEN (SELECT basehp0 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 1 THEN (SELECT basehp1 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 2 THEN (SELECT basehp2 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+END),
+
+-- Getting base armor
+
+@GET_AR_COL := (SELECT basearmor FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS);
+
+ 
+
+ 
+
+UPDATE creature_template SET Health_mod = (@NPC_HEALTH/@GET_HP_COL), Armor_mod = (@NPC_ARMOR/@GET_AR_COL) WHERE Entry = @NPC_ENTRY;
+
+
+
+XXXXXXXXXXXXXX
+
+
+
+
+SET
+
+@NPC_ENTRY := 43438, 
+
+@NPC_HEALTH := 1612400, 
+
+@NPC_MANA := 200000, 
+
+@NPC_ARMOR := 10763; 
+
+ 
+
+-- DO NOT CHANGE ANYTHING BELOW
+
+SET
+
+@NPC_CLASS := (SELECT `unit_class` FROM creature_template WHERE Entry = @NPC_ENTRY),
+
+@NPC_LEVEL := ROUND(((SELECT `minlevel` FROM creature_template WHERE Entry = @NPC_ENTRY)+(SELECT `maxlevel` FROM creature_template WHERE Entry = @NPC_ENTRY))/2, 0),
+
+@EXP := (SELECT `exp` FROM creature_template WHERE Entry = @NPC_ENTRY);
+
+ 
+
+SET
+
+@GET_HP_COL :=
+
+(SELECT CASE @EXP
+
+        WHEN 0 THEN (SELECT basehp0 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 1 THEN (SELECT basehp1 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 2 THEN (SELECT basehp2 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+END),
+
+-- Getting base armor
+
+@GET_AR_COL := (SELECT basearmor FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS);
+
+ 
+
+ 
+
+UPDATE creature_template SET Health_mod = (@NPC_HEALTH/@GET_HP_COL), Armor_mod = (@NPC_ARMOR/@GET_AR_COL) WHERE Entry = @NPC_ENTRY;
+
+
+
+
+XXXXXXXXXXXXXX
+
+
+
+
+SET
+
+@NPC_ENTRY := 49642, 
+
+@NPC_HEALTH := 2904790, 
+
+@NPC_MANA := 200000, 
+
+@NPC_ARMOR := 10763; 
+
+ 
+
+-- DO NOT CHANGE ANYTHING BELOW
+
+SET
+
+@NPC_CLASS := (SELECT `unit_class` FROM creature_template WHERE Entry = @NPC_ENTRY),
+
+@NPC_LEVEL := ROUND(((SELECT `minlevel` FROM creature_template WHERE Entry = @NPC_ENTRY)+(SELECT `maxlevel` FROM creature_template WHERE Entry = @NPC_ENTRY))/2, 0),
+
+@EXP := (SELECT `exp` FROM creature_template WHERE Entry = @NPC_ENTRY);
+
+ 
+
+SET
+
+@GET_HP_COL :=
+
+(SELECT CASE @EXP
+
+        WHEN 0 THEN (SELECT basehp0 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 1 THEN (SELECT basehp1 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 2 THEN (SELECT basehp2 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+END),
+
+-- Getting base armor
+
+@GET_AR_COL := (SELECT basearmor FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS);
+
+ 
+
+ 
+
+UPDATE creature_template SET Health_mod = (@NPC_HEALTH/@GET_HP_COL), Armor_mod = (@NPC_ARMOR/@GET_AR_COL) WHERE Entry = @NPC_ENTRY;
+
+
+
+
+XXXXXXXXXXXXXX
+
+
+
+
+SET
+
+@NPC_ENTRY := 43214, 
+
+@NPC_HEALTH := 2450848, 
+
+@NPC_MANA := 200000, 
+
+@NPC_ARMOR := 10763; 
+
+ 
+
+-- DO NOT CHANGE ANYTHING BELOW
+
+SET
+
+@NPC_CLASS := (SELECT `unit_class` FROM creature_template WHERE Entry = @NPC_ENTRY),
+
+@NPC_LEVEL := ROUND(((SELECT `minlevel` FROM creature_template WHERE Entry = @NPC_ENTRY)+(SELECT `maxlevel` FROM creature_template WHERE Entry = @NPC_ENTRY))/2, 0),
+
+@EXP := (SELECT `exp` FROM creature_template WHERE Entry = @NPC_ENTRY);
+
+ 
+
+SET
+
+@GET_HP_COL :=
+
+(SELECT CASE @EXP
+
+        WHEN 0 THEN (SELECT basehp0 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 1 THEN (SELECT basehp1 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 2 THEN (SELECT basehp2 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+END),
+
+-- Getting base armor
+
+@GET_AR_COL := (SELECT basearmor FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS);
+
+ 
+
+ 
+
+UPDATE creature_template SET Health_mod = (@NPC_HEALTH/@GET_HP_COL), Armor_mod = (@NPC_ARMOR/@GET_AR_COL) WHERE Entry = @NPC_ENTRY;
+
+
+
+
+
+
+XXXXXXXXXXXXXX
+
+
+
+
+
+
+
+SET
+
+@NPC_ENTRY := 49538, 
+
+@NPC_HEALTH := 4149700, 
+
+@NPC_MANA := 200000, 
+
+@NPC_ARMOR := 10763; 
+
+ 
+
+-- DO NOT CHANGE ANYTHING BELOW
+
+SET
+
+@NPC_CLASS := (SELECT `unit_class` FROM creature_template WHERE Entry = @NPC_ENTRY),
+
+@NPC_LEVEL := ROUND(((SELECT `minlevel` FROM creature_template WHERE Entry = @NPC_ENTRY)+(SELECT `maxlevel` FROM creature_template WHERE Entry = @NPC_ENTRY))/2, 0),
+
+@EXP := (SELECT `exp` FROM creature_template WHERE Entry = @NPC_ENTRY);
+
+ 
+
+SET
+
+@GET_HP_COL :=
+
+(SELECT CASE @EXP
+
+        WHEN 0 THEN (SELECT basehp0 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 1 THEN (SELECT basehp1 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 2 THEN (SELECT basehp2 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+END),
+
+-- Getting base armor
+
+@GET_AR_COL := (SELECT basearmor FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS);
+
+ 
+
+ 
+
+UPDATE creature_template SET Health_mod = (@NPC_HEALTH/@GET_HP_COL), Armor_mod = (@NPC_ARMOR/@GET_AR_COL) WHERE Entry = @NPC_ENTRY;
+
+
+
+
+
+XXXXXXXXXXXXXXXXX
+
+
+
+
+
+SET
+
+@NPC_ENTRY := 42188, 
+
+@NPC_HEALTH := 2450848, 
+
+@NPC_MANA := 200000, 
+
+@NPC_ARMOR := 10763; 
+
+ 
+
+-- DO NOT CHANGE ANYTHING BELOW
+
+SET
+
+@NPC_CLASS := (SELECT `unit_class` FROM creature_template WHERE Entry = @NPC_ENTRY),
+
+@NPC_LEVEL := ROUND(((SELECT `minlevel` FROM creature_template WHERE Entry = @NPC_ENTRY)+(SELECT `maxlevel` FROM creature_template WHERE Entry = @NPC_ENTRY))/2, 0),
+
+@EXP := (SELECT `exp` FROM creature_template WHERE Entry = @NPC_ENTRY);
+
+ 
+
+SET
+
+@GET_HP_COL :=
+
+(SELECT CASE @EXP
+
+        WHEN 0 THEN (SELECT basehp0 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 1 THEN (SELECT basehp1 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 2 THEN (SELECT basehp2 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+END),
+
+-- Getting base armor
+
+@GET_AR_COL := (SELECT basearmor FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS);
+
+ 
+
+ 
+
+UPDATE creature_template SET Health_mod = (@NPC_HEALTH/@GET_HP_COL), Armor_mod = (@NPC_ARMOR/@GET_AR_COL) WHERE Entry = @NPC_ENTRY;
+
+
+XXXXXXXXXXXXXX
+
+
+
+SET
+
+@NPC_ENTRY := 49654, 
+
+@NPC_HEALTH := 3319760, 
+
+@NPC_MANA := 200000, 
+
+@NPC_ARMOR := 10763; 
+
+ 
+
+-- DO NOT CHANGE ANYTHING BELOW
+
+SET
+
+@NPC_CLASS := (SELECT `unit_class` FROM creature_template WHERE Entry = @NPC_ENTRY),
+
+@NPC_LEVEL := ROUND(((SELECT `minlevel` FROM creature_template WHERE Entry = @NPC_ENTRY)+(SELECT `maxlevel` FROM creature_template WHERE Entry = @NPC_ENTRY))/2, 0),
+
+@EXP := (SELECT `exp` FROM creature_template WHERE Entry = @NPC_ENTRY);
+
+ 
+
+SET
+
+@GET_HP_COL :=
+
+(SELECT CASE @EXP
+
+        WHEN 0 THEN (SELECT basehp0 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 1 THEN (SELECT basehp1 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 2 THEN (SELECT basehp2 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+END),
+
+-- Getting base armor
+
+@GET_AR_COL := (SELECT basearmor FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS);
+
+ 
+
+ 
+
+UPDATE creature_template SET Health_mod = (@NPC_HEALTH/@GET_HP_COL), Armor_mod = (@NPC_ARMOR/@GET_AR_COL) WHERE Entry = @NPC_ENTRY;
+
+
+
+XXXXXXXXXXXXXX
+
+
+
+
+SET
+
+@NPC_ENTRY := 42696, 
+
+@NPC_HEALTH := 315753, 
+
+@NPC_MANA := 200000, 
+
+@NPC_ARMOR := 10763; 
+
+ 
+
+-- DO NOT CHANGE ANYTHING BELOW
+
+SET
+
+@NPC_CLASS := (SELECT `unit_class` FROM creature_template WHERE Entry = @NPC_ENTRY),
+
+@NPC_LEVEL := ROUND(((SELECT `minlevel` FROM creature_template WHERE Entry = @NPC_ENTRY)+(SELECT `maxlevel` FROM creature_template WHERE Entry = @NPC_ENTRY))/2, 0),
+
+@EXP := (SELECT `exp` FROM creature_template WHERE Entry = @NPC_ENTRY);
+
+ 
+
+SET
+
+@GET_HP_COL :=
+
+(SELECT CASE @EXP
+
+        WHEN 0 THEN (SELECT basehp0 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 1 THEN (SELECT basehp1 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 2 THEN (SELECT basehp2 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+END),
+
+-- Getting base armor
+
+@GET_AR_COL := (SELECT basearmor FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS);
+
+ 
+
+ 
+
+UPDATE creature_template SET Health_mod = (@NPC_HEALTH/@GET_HP_COL), Armor_mod = (@NPC_ARMOR/@GET_AR_COL) WHERE Entry = @NPC_ENTRY;
+
+XXXXXXXXXXXXXX
+
+SET
+
+@NPC_ENTRY := 49667, 
+
+@NPC_HEALTH := 387450, 
+
+@NPC_MANA := 200000, 
+
+@NPC_ARMOR := 10763; 
+
+ 
+
+-- DO NOT CHANGE ANYTHING BELOW
+
+SET
+
+@NPC_CLASS := (SELECT `unit_class` FROM creature_template WHERE Entry = @NPC_ENTRY),
+
+@NPC_LEVEL := ROUND(((SELECT `minlevel` FROM creature_template WHERE Entry = @NPC_ENTRY)+(SELECT `maxlevel` FROM creature_template WHERE Entry = @NPC_ENTRY))/2, 0),
+
+@EXP := (SELECT `exp` FROM creature_template WHERE Entry = @NPC_ENTRY);
+
+ 
+
+SET
+
+@GET_HP_COL :=
+
+(SELECT CASE @EXP
+
+        WHEN 0 THEN (SELECT basehp0 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 1 THEN (SELECT basehp1 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 2 THEN (SELECT basehp2 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+END),
+
+-- Getting base armor
+
+@GET_AR_COL := (SELECT basearmor FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS);
+
+ 
+
+ 
+
+UPDATE creature_template SET Health_mod = (@NPC_HEALTH/@GET_HP_COL), Armor_mod = (@NPC_ARMOR/@GET_AR_COL) WHERE Entry = @NPC_ENTRY;
+
+
+
+
+XXXXXXXXXXXXXX
+
+
+
+
+SET
+
+@NPC_ENTRY := 43391, 
+
+@NPC_HEALTH := 386505, 
+
+@NPC_MANA := 200000, 
+
+@NPC_ARMOR := 10763; 
+
+ 
+
+-- DO NOT CHANGE ANYTHING BELOW
+
+SET
+
+@NPC_CLASS := (SELECT `unit_class` FROM creature_template WHERE Entry = @NPC_ENTRY),
+
+@NPC_LEVEL := ROUND(((SELECT `minlevel` FROM creature_template WHERE Entry = @NPC_ENTRY)+(SELECT `maxlevel` FROM creature_template WHERE Entry = @NPC_ENTRY))/2, 0),
+
+@EXP := (SELECT `exp` FROM creature_template WHERE Entry = @NPC_ENTRY);
+
+ 
+
+SET
+
+@GET_HP_COL :=
+
+(SELECT CASE @EXP
+
+        WHEN 0 THEN (SELECT basehp0 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 1 THEN (SELECT basehp1 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 2 THEN (SELECT basehp2 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+END),
+
+-- Getting base armor
+
+@GET_AR_COL := (SELECT basearmor FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS);
+
+ 
+
+ 
+
+UPDATE creature_template SET Health_mod = (@NPC_HEALTH/@GET_HP_COL), Armor_mod = (@NPC_ARMOR/@GET_AR_COL) WHERE Entry = @NPC_ENTRY;
+
+
+
+
+
+
+XXXXXXXXXXXXXX
+
+
+
+
+
+
+
+SET
+
+@NPC_ENTRY := 49653, 
+
+@NPC_HEALTH := 513248, 
+
+@NPC_MANA := 200000, 
+
+@NPC_ARMOR := 10763; 
+
+ 
+
+-- DO NOT CHANGE ANYTHING BELOW
+
+SET
+
+@NPC_CLASS := (SELECT `unit_class` FROM creature_template WHERE Entry = @NPC_ENTRY),
+
+@NPC_LEVEL := ROUND(((SELECT `minlevel` FROM creature_template WHERE Entry = @NPC_ENTRY)+(SELECT `maxlevel` FROM creature_template WHERE Entry = @NPC_ENTRY))/2, 0),
+
+@EXP := (SELECT `exp` FROM creature_template WHERE Entry = @NPC_ENTRY);
+
+ 
+
+SET
+
+@GET_HP_COL :=
+
+(SELECT CASE @EXP
+
+        WHEN 0 THEN (SELECT basehp0 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 1 THEN (SELECT basehp1 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+        WHEN 2 THEN (SELECT basehp2 FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS)
+
+END),
+
+-- Getting base armor
+
+@GET_AR_COL := (SELECT basearmor FROM creature_classlevelstats WHERE `level` = @NPC_LEVEL AND `class` = @NPC_CLASS);
+
+ 
+
+ 
+
+UPDATE creature_template SET Health_mod = (@NPC_HEALTH/@GET_HP_COL), Armor_mod = (@NPC_ARMOR/@GET_AR_COL) WHERE Entry = @NPC_ENTRY;
+
+
