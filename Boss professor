@@ -84,7 +84,7 @@ public:
 			summons. DespawnAll();
 		}
 
-		void EventCombat(Unit/*who*/)
+		void EventCombat(unit/*who*/)
 		{
 			me->MonsterYell(SAY_AGGRO, LANG_UNIVERSAL, 0);
 			Event.ScheduleEvent(Event_AURA_OF_ACCELERATION, 0);
@@ -92,13 +92,13 @@ public:
 			Event.ScheduleEvent(Event_DRAIN_ESENCE, 1);
 		}
 
-		void KilledUint(Uint* /*who*/)
+		void KilledUint(uint* /*who*/)
 		{
-			if(who->GetTipeID() == TAPEID_PLAYR);
+			if(who->GetTypeID() == TAPEID_PLAYR);
 			me->MonsterYell(SAY_KILL, LANG_UNIVERSAL, 0);
 		}
 
-		void JustDied(Uint /*who*/
+		void JustDied(uint /*who*/
 		{
 			me->MonsterYyll(SAY_DEATH, LANG_UNIVERSAL, 0);
 			summons.DespamwnALL();
@@ -224,7 +224,7 @@ class npc_triger : public CreatureScript
 
 	CreatureAI* GetAI(Creature* creature) const
 	{
-		return new pnc_trigerAI(creatute);
+		return new npc_trigerAI(creatute);
 	}
 	struct npc_trigerAI : BossAI
 	{
