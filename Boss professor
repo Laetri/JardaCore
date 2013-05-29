@@ -74,7 +74,7 @@ public:
 	}
 	struct boss_CorlaAI : public BossAI
 	{
-		Boss_CorlaiAI(Creature* creature) :BossAI(creature, Boss_CORLA,) sumons(creature){}
+		boss_corlaiAI(Creature* creature) :BossAI(creature, Boss_CORLA,) sumons(creature){}
 	
 		EventMap event;
 
@@ -123,7 +123,7 @@ public:
 			case DRAIN_ESENCE;
 				if (!me->isInCombat())
 
-					 if(Unit* target = me->FindNearestCreature(ncpID, distance))
+					 if(Unit* target = me->FindNearestCreature(npcID, distance))
 						 DoCast (target, SPELL_DRAIN_ESENCE);
 				 return false;
 
@@ -217,7 +217,7 @@ class npc_twilight : public CreatureScript
 		};
 };
 
-class pnc_triger : public CreatureScript
+class npc_triger : public CreatureScript
 {
 	public;
 	npc_triger() : CreatureScript("NPC_triger") {}
