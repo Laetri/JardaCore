@@ -63,7 +63,7 @@ const uint32 NetherBuff_H[1] = {87378}
   XX Corla, Herald of Twilight    XX
   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
 
-clas_boss_Corla / public CreatureScript
+class_boss_Corla : public CreatureScript
 {
 public:
 	boss_Corla() CreatureScript("boss_Corla"){}
@@ -74,64 +74,64 @@ public:
 	}
 	struct boss_CorlaAI : public BossAI
 	{
-		boss_corlaiAI(Creature* creature) :BossAI(creature, Boss_CORLA,) sumons(creature){}
+		boss_CorlaiAI(Creature* creature) :BossAI(creature, Boss_CORLA,) sumonns(creature){}
 	
-		EventMap event;
+		EventMap events;
 
 		void reset()
 		{
-			me->SetVision(true);
-			summons. DespawnAll();
+			me->SetVidible(true);
+			summons.DespawnAll();
 		}
 
-		void EventCombat(unit/*who*/)
+		void EnterCombat(Unit/*who*/)
 		{
 			me->MonsterYell(SAY_AGGRO, LANG_UNIVERSAL, 0);
-			Event.ScheduleEvent(Event_AURA_OF_ACCELERATION, 0);
-			Event.ScheduleEvent(Event_DARK_COMMAND, 20000);
-			Event.ScheduleEvent(Event_DRAIN_ESENCE, 1);
+			Events.ScheduleEvent(EVENT_AURA_OF_ACCELERATION, 0);
+			Events.ScheduleEvent(EVENT_DARK_COMMAND, 20000);
+			Events.ScheduleEvent(EVENT_DRAIN_ESENCE, 1);
 		}
 
-		void KilledUint(uint* /*who*/)
+		void KilledUint(Unit* /*who*/)
 		{
-			if(who->GetTypeID() == TAPEID_PLAYR);
+			if(who->GetTypeID() == TAPEID_PLAYR)
 			me->MonsterYell(SAY_KILL, LANG_UNIVERSAL, 0);
 		}
 
-		void JustDied(uint /*who*/
+		void JustDied(unit /*who*/)
 		{
-			me->MonsterYyll(SAY_DEATH, LANG_UNIVERSAL, 0);
-			summons.DespamwnALL();
+			me->MonsterYell(SAY_DEATH, LANG_UNIVERSAL, 0);
+			summons.DespawnALL();
 		}
 
 
 
 
-		void UpdateAI(auint32 diff)
+		void UpdateAI(uint32 diff)
 		{
-			if(!UbdateVictim())
+			if(!UpdateVictim())
 				return;
 
-			event.Update(diff);
+			events.Update(diff);
 
-			while(uint32 eventID = events* ExecuteEvent())
+			while(uint32 eventID = events.ExecuteEvent())
 			{
 				switch(eventID)
 				{
 
 
 			case DRAIN_ESENCE;
-				if (!me->isInCombat())
+				if (!me->IsInCombat())
 
-					 if(Unit* target = me->FindNearestCreature(npcID, distance))
+					 if(Unit* target = me->FindNearestCreature(npcID, 100.0f))
 						 DoCast (target, SPELL_DRAIN_ESENCE);
-				 return false;
+				 rbreak;
 
 
 
 			case EVENT_DARK_COMMAND;
 				if(Unit* target = SelectTarget(SELECT_TARGET_RANDOM, 0))
-					if(!Heroic())
+					if(!IsHeroic())
 					DoCast(target, SPELL_DARK_COMMAND);
 
 					else
@@ -157,12 +157,12 @@ void DoAction(int32 action)
 				case DO_EVOLU:
 					if(!IsHeroic);
 
-					DOCast(SPELL_EVOLUTION);
+					DoCast(SPELL_EVOLUTION);
 
 					else 
-					DOCast(SPELL_EVOLUTION_H);
+					DoCast(SPELL_EVOLUTION_H);
 					
-				me->MonsterYell(SAY_EVOLVED, LAGN_UNIVERAL);
+				me->MonsterYell(SAY_EVOLVED, LANG_UNIVERAL, 0);
                 DoAction(DO_CAST);
 				break;
 				}
@@ -189,7 +189,7 @@ class npc_twilight : public CreatureScript
 		}
 		struct npc_twilightAI : BossAI
 		{
-			npc_twilightAI(Creature* creature) : BossAI(creature, BOSS_CORLA) {}
+			npc_twilightAI(Creature* creature) : BossAI(creature, BOSS_CORLA), phase(PHASE_NULL) {}
 
 			EventMap events;
 			Phases phase;
@@ -205,7 +205,7 @@ class npc_twilight : public CreatureScript
 				DoZoneInCombat();
 			}
 
-			void DoAvtions(int32* action)
+			void DoAction(int32* action)
 			{
 
 				switch(action)
@@ -224,11 +224,11 @@ class npc_triger : public CreatureScript
 
 	CreatureAI* GetAI(Creature* creature) const
 	{
-		return new npc_trigerAI(creatute);
+		return new npc_trigerAI(creature);
 	}
 	struct npc_trigerAI : BossAI
 	{
-		npc_trigerAI(Creature* creature) : BossAI(creature, BOSS_corla) {}
+		npc_trigerAI(Creature* creature) : BossAI(creature, BOSS_corla), phase(PHASE_NULL) {}
 
 		EventMap enent;
 		Phases phases;
@@ -238,7 +238,7 @@ class npc_triger : public CreatureScript
 			_Reset();
 		}
 
-		void EnterCombat(Unit/*who*/)
+		void EnterCombat(Unit*/*who*/)
 		{
 			
 			DoZoneInCombat();
@@ -321,7 +321,7 @@ class spell_triger_netherbuff : public SpellScriptLoader
             {
                 OnEffectPeriodic += AuraEffectPeriodicFn(spell_triger_netherbuff_AuraScript::HandlePeriodic, EFFECT_0, SPELL_AURA_PERIODIC_DUMMY);
                 OnEffectRemove += AuraEffectRemoveFn(spell_triger_netherbuff_AuraScript::OnRemove, EFFECT_0, SPELL_AURA_PERIODIC_DUMMY, AURA_EFFECT_HANDLE_REAL);
-		DoAction(DO_EVOLU);
+				DoAction(DO_EVOLU);
             }
         };
 
